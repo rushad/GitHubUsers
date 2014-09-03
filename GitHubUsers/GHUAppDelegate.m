@@ -8,14 +8,22 @@
 
 #import "GHUAppDelegate.h"
 
+#import "GHUMainViewController.h"
+
 @implementation GHUAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    // Override point for customization after application launch.
-    self.window.backgroundColor = [UIColor whiteColor];
+    
+    GHUMainViewController* mainViewController = [[GHUMainViewController alloc] initWithNibName:@"Main_iPhone" bundle:nil];
+    
+    UINavigationController* navigationController = [[UINavigationController alloc] initWithRootViewController:mainViewController];
+    
+    self.window.rootViewController = navigationController;
+    
     [self.window makeKeyAndVisible];
+    
     return YES;
 }
 

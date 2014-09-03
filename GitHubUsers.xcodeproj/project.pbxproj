@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5E38FA8F19B719FE00EDFD99 /* GHUImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E38FA8819B719FD00EDFD99 /* GHUImageCache.m */; };
+		5E38FA9019B719FE00EDFD99 /* GHUMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E38FA8A19B719FD00EDFD99 /* GHUMainViewController.m */; };
+		5E38FA9119B719FE00EDFD99 /* GHUUserCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E38FA8C19B719FD00EDFD99 /* GHUUserCell.m */; };
+		5E38FA9219B719FE00EDFD99 /* Main_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5E38FA8D19B719FD00EDFD99 /* Main_iPhone.xib */; };
+		5E38FA9319B719FE00EDFD99 /* UserCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5E38FA8E19B719FE00EDFD99 /* UserCell.xib */; };
 		5E3A8BF919B6F9C700BA3B04 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E3A8BF819B6F9C700BA3B04 /* Foundation.framework */; };
 		5E3A8BFB19B6F9C700BA3B04 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E3A8BFA19B6F9C700BA3B04 /* CoreGraphics.framework */; };
 		5E3A8BFD19B6F9C700BA3B04 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E3A8BFC19B6F9C700BA3B04 /* UIKit.framework */; };
@@ -32,6 +37,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5E38FA8719B719FD00EDFD99 /* GHUImageCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GHUImageCache.h; sourceTree = "<group>"; };
+		5E38FA8819B719FD00EDFD99 /* GHUImageCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHUImageCache.m; sourceTree = "<group>"; };
+		5E38FA8919B719FD00EDFD99 /* GHUMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GHUMainViewController.h; sourceTree = "<group>"; };
+		5E38FA8A19B719FD00EDFD99 /* GHUMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHUMainViewController.m; sourceTree = "<group>"; };
+		5E38FA8B19B719FD00EDFD99 /* GHUUserCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GHUUserCell.h; sourceTree = "<group>"; };
+		5E38FA8C19B719FD00EDFD99 /* GHUUserCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHUUserCell.m; sourceTree = "<group>"; };
+		5E38FA8D19B719FD00EDFD99 /* Main_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Main_iPhone.xib; sourceTree = "<group>"; };
+		5E38FA8E19B719FE00EDFD99 /* UserCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserCell.xib; sourceTree = "<group>"; };
 		5E3A8BF519B6F9C700BA3B04 /* GitHubUsers.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GitHubUsers.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E3A8BF819B6F9C700BA3B04 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		5E3A8BFA19B6F9C700BA3B04 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -74,6 +87,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5E38FA9419B71A0800EDFD99 /* MainView */ = {
+			isa = PBXGroup;
+			children = (
+				5E38FA8919B719FD00EDFD99 /* GHUMainViewController.h */,
+				5E38FA8A19B719FD00EDFD99 /* GHUMainViewController.m */,
+				5E38FA8B19B719FD00EDFD99 /* GHUUserCell.h */,
+				5E38FA8C19B719FD00EDFD99 /* GHUUserCell.m */,
+				5E38FA8D19B719FD00EDFD99 /* Main_iPhone.xib */,
+				5E38FA8E19B719FE00EDFD99 /* UserCell.xib */,
+			);
+			name = MainView;
+			sourceTree = "<group>";
+		};
 		5E3A8BEC19B6F9C600BA3B04 = {
 			isa = PBXGroup;
 			children = (
@@ -107,6 +133,9 @@
 		5E3A8BFE19B6F9C700BA3B04 /* GitHubUsers */ = {
 			isa = PBXGroup;
 			children = (
+				5E38FA9419B71A0800EDFD99 /* MainView */,
+				5E38FA8719B719FD00EDFD99 /* GHUImageCache.h */,
+				5E38FA8819B719FD00EDFD99 /* GHUImageCache.m */,
 				5E3A8C0719B6F9C700BA3B04 /* GHUAppDelegate.h */,
 				5E3A8C0819B6F9C700BA3B04 /* GHUAppDelegate.m */,
 				5E3A8C0A19B6F9C700BA3B04 /* Images.xcassets */,
@@ -220,6 +249,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5E38FA9319B719FE00EDFD99 /* UserCell.xib in Resources */,
+				5E38FA9219B719FE00EDFD99 /* Main_iPhone.xib in Resources */,
 				5E3A8C0319B6F9C700BA3B04 /* InfoPlist.strings in Resources */,
 				5E3A8C0B19B6F9C700BA3B04 /* Images.xcassets in Resources */,
 			);
@@ -242,6 +273,9 @@
 			files = (
 				5E3A8C0519B6F9C700BA3B04 /* main.m in Sources */,
 				5E3A8C0919B6F9C700BA3B04 /* GHUAppDelegate.m in Sources */,
+				5E38FA9119B719FE00EDFD99 /* GHUUserCell.m in Sources */,
+				5E38FA9019B719FE00EDFD99 /* GHUMainViewController.m in Sources */,
+				5E38FA8F19B719FE00EDFD99 /* GHUImageCache.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -438,6 +472,7 @@
 				5E3A8C2319B6F9C700BA3B04 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		5E3A8C2419B6F9C700BA3B04 /* Build configuration list for PBXNativeTarget "GitHubUsersTests" */ = {
 			isa = XCConfigurationList;
@@ -446,6 +481,7 @@
 				5E3A8C2619B6F9C700BA3B04 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
