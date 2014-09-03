@@ -10,7 +10,7 @@
 
 #import "GHUUserCell.h"
 #import "GHUUserInfo.h"
-#impo
+#import "GHUUtils.h"
 
 #import <RestKit/RestKit.h>
 
