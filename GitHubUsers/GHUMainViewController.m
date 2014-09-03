@@ -8,6 +8,7 @@
 
 #import "GHUMainViewController.h"
 
+#import "GHUImageCache.h"
 #import "GHUUserCell.h"
 #import "GHUUserInfo.h"
 #import "GHUUtils.h"
@@ -17,7 +18,9 @@
 @interface GHUMainViewController () <UISearchBarDelegate>
 
 @property (nonatomic, strong) NSString* currentSearchString;
+@property (nonatomic) NSNumber* searchId;
 @property (nonatomic, strong) NSArray* users;
+@property (nonatomic, strong) GHUImageCache* imageCache;
 @property (nonatomic, weak) UITableView* tableView;
 
 @end
@@ -29,6 +32,8 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self)
     {
+        self.imageCache = [[GHUImageCache alloc] init];
+        self.searchId = [NSNumber numberWithInt:0];
     }
     return self;
 }
@@ -58,7 +63,13 @@
     
     // setup object mappings
     RKObjectMapping *userMapping = [RKObjectMapping mappingForClass:[GHUUserInfo class]];
-    [userMapping addAttributeMappingsFromArray:@[@"login"]];
+    [userMapping addAttributeMappingsFromDictionary:@{
+                                                       @"id" : @"userId",
+                                                       @"login" : @"name",
+                                                       @"score" : @"score",
+                                                       @"html_url" : @"url",
+                                                       @"avatar_url" : @"avatarUrl"
+                                                     }];
     
     // register mappings with the provider using a response descriptor
     RKResponseDescriptor *responseDescriptor =
@@ -73,19 +84,22 @@
 
 - (void)loadUsers
 {
-    NSString* login = @"Rushad";
+    UIActivityIndicatorView* spinner = [GHUUtils startSpinnerAtView:self.view];
     
-    NSDictionary *queryParams = @{@"q" : login};
+    NSDictionary *queryParams = @{@"q" : self.currentSearchString};
     
     [[RKObjectManager sharedManager] getObjectsAtPath:@"/search/users"
                                            parameters:queryParams
-                                              success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-                                                  _users = mappingResult.array;
-                                                  [self.tableView reloadData];
-                                              }
-                                              failure:^(RKObjectRequestOperation *operation, NSError *error) {
-                                                  NSLog(@"What do you mean by 'there is no users?': %@", error);
-                                              }];
+                                              success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult)
+                                                       {
+                                                           [GHUUtils stopSpinner:spinner];
+                                                           _users = mappingResult.array;
+                                                           [self.tableView reloadData];
+                                                       }
+                                              failure:^(RKObjectRequestOperation *operation, NSError *error)
+                                                       {
+                                                           NSLog(@"What do you mean by 'there is no users?': %@", error);
+                                                       }];
 }
 
 #pragma mark - UISearchBarDelegate
@@ -95,6 +109,7 @@
     [searchBar resignFirstResponder];
     
     self.currentSearchString = searchBar.text;
+    self.searchId = [NSNumber numberWithInt:self.searchId.intValue + 1];
     
     self.users = [[NSArray alloc] init];
     UITableView* tableView = (UITableView*)self.view;
@@ -128,13 +143,39 @@
 
 - (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return [tableView dequeueReusableCellWithIdentifier:@"UserCell"];
+    GHUUserCell* cell = [tableView dequeueReusableCellWithIdentifier:@"UserCell"];
+    cell.avatar.image = nil;
+    return cell;
 }
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(GHUUserCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     GHUUserInfo* userInfo = self.users[indexPath.row];
-    cell.login.text = userInfo.login;
+    cell.name.text = userInfo.name;
+    cell.url.text = userInfo.url;
+    if (userInfo.avatar)
+    {
+        cell.avatar.image = userInfo.avatar;
+    }
+    else
+    {
+        UIActivityIndicatorView* spinner = [GHUUtils startSpinnerAtView:cell.avatar];
+        
+        [self.imageCache startLoadingImageWithUrl:userInfo.avatarUrl
+                                         userData:self.searchId
+                                completionHandler:^(UIImage* image, NSNumber* searchId)
+                                                   {
+                                                       if ([searchId isEqualToNumber:self.searchId])
+                                                       {
+                                                           [GHUUtils stopSpinner:spinner];
+                                                           userInfo.avatar = image;
+                                                           [tableView beginUpdates];
+                                                           [tableView reloadRowsAtIndexPaths:@[indexPath]
+                                                                            withRowAnimation:UITableViewRowAnimationFade];
+                                                           [tableView endUpdates];
+                                                       }
+                                                   }];
+    }
 }
 
 @end

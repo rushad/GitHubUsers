@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface GhuUtils : NSObject
+@interface GHUUtils : NSObject
 
 + (UIActivityIndicatorView*)startSpinnerAtView:(UIView*)view;
 + (void)stopSpinner:(UIActivityIndicatorView*)spinner;

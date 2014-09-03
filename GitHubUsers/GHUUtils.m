@@ -8,22 +8,24 @@
 
 #import "GhuUtils.h"
 
-@implementation GhuUtils
+@implementation GHUUtils
 
 + (UIActivityIndicatorView*)startSpinnerAtView:(UIView*)view
 {
-  CGRect viewRect = view.frame;
-  CGRect spinnerRect = CGRectMake((viewRect.size.width - 50)/2, (viewRect.size.height-50)/2, 50, 50);
-  UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc]initWithFrame:spinnerRect];
-  spinner.color = [UIColor blueColor];
-  [spinner startAnimating];
-  [view addSubview:spinner];
-  return spinner;
+    CGPoint center = view.center;
+    center.x += view.bounds.origin.x;
+    center.y += view.bounds.origin.y;
+    CGRect spinnerRect = CGRectMake(center.x - 10, center.y - 10, 20, 20);
+    UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithFrame:spinnerRect];
+    spinner.color = [UIColor blueColor];
+    [spinner startAnimating];
+    [view addSubview:spinner];
+    return spinner;
 }
 
 + (void)stopSpinner:(UIActivityIndicatorView*)spinner
 {
-  [spinner removeFromSuperview];
+    [spinner removeFromSuperview];
 }
 
 @end

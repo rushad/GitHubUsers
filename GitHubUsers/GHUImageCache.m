@@ -8,12 +8,35 @@
 
 #import "GHUImageCache.h"
 
+@interface GHUImageCache()
+
+@property (nonatomic, strong) NSOperationQueue* queue;
+
+@end
+
 @implementation GHUImageCache
 
-- (void)startLoadingImageWithUrl:(NSString*)url
-               completionHandler:(void(^)(UIImage*))completionHandler
+- (instancetype)init
 {
-    NSLog(@"loadingImage...");
+    self = [super init];
+    if (self)
+    {
+        _queue = [[NSOperationQueue alloc] init];
+    }
+    return self;
+}
+
+- (void)startLoadingImageWithUrl:(NSString*)url
+                        userData:(id)userData
+               completionHandler:(void(^)(UIImage*, id))completionHandler
+{
+    NSBlockOperation* loadOperation = [NSBlockOperation blockOperationWithBlock:^{
+        UIImage* image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:url]]];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            completionHandler(image, userData);
+        });
+    }];
+    [self.queue addOperation:loadOperation];
 }
 
 @end

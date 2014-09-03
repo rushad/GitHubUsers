@@ -10,6 +10,8 @@
 
 @interface GHUUserCell : UITableViewCell
 
-@property (weak, nonatomic) IBOutlet UILabel *login;
+@property (weak, nonatomic) IBOutlet UILabel *name;
+@property (weak, nonatomic) IBOutlet UILabel *url;
+@property (weak, nonatomic) IBOutlet UIImageView *avatar;
 
 @end

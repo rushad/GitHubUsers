@@ -10,6 +10,11 @@
 
 @interface GHUUserInfo : NSObject
 
-@property (nonatomic, strong) NSString* login;
+@property NSUInteger userId;
+@property (strong) NSString* name;
+@property (strong) NSNumber* score;
+@property (strong) NSString* url;
+@property (strong) NSString* avatarUrl;
+@property (strong) UIImage* avatar;
 
 @end

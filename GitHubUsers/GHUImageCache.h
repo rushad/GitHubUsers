@@ -11,6 +11,7 @@
 @interface GHUImageCache : NSObject
 
 - (void)startLoadingImageWithUrl:(NSString*)url
-               completionHandler:(void(^)(UIImage*))completionHandler;
+                        userData:(id)userData
+               completionHandler:(void(^)(UIImage*, id))completionHandler;
 
 @end
