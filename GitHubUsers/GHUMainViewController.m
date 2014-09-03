@@ -7,11 +7,18 @@
 //
 
 #import "GHUMainViewController.h"
+
 #import "GHUUserCell.h"
+#import "GHUUserInfo.h"
+#impo
+
+#import <RestKit/RestKit.h>
 
 @interface GHUMainViewController () <UISearchBarDelegate>
 
 @property (nonatomic, strong) NSString* currentSearchString;
+@property (nonatomic, strong) NSArray* users;
+@property (nonatomic, weak) UITableView* tableView;
 
 @end
 
@@ -30,15 +37,55 @@
 {
     [super viewDidLoad];
     
+    [self configureRestKit];
+
     UISearchBar* searchBar = [[UISearchBar alloc] initWithFrame:self.navigationItem.titleView.frame];
     searchBar.delegate = self;
     self.navigationItem.titleView = searchBar;
-/*
-    UITableView* tableView = (UITableView*)self.view;
 
-    [tableView registerClass:[GHUUserCell class] forCellReuseIdentifier:@"UserCell"];
-//    [tableView registerNib:[UINib nibWithNibName:@"Main_iPhone" bundle:nil] forCellReuseIdentifier:@"UserCell"];
-*/ 
+    UITableView* tableView = (UITableView*)self.view;
+    [tableView registerNib:[UINib nibWithNibName:@"UserCell" bundle:nil] forCellReuseIdentifier:@"UserCell"];
+}
+
+- (void)configureRestKit
+{
+    // initialize AFNetworking HTTPClient
+    NSURL *baseURL = [NSURL URLWithString:@"https://api.github.com"];
+    AFHTTPClient *client = [[AFHTTPClient alloc] initWithBaseURL:baseURL];
+    
+    // initialize RestKit
+    RKObjectManager *objectManager = [[RKObjectManager alloc] initWithHTTPClient:client];
+    
+    // setup object mappings
+    RKObjectMapping *userMapping = [RKObjectMapping mappingForClass:[GHUUserInfo class]];
+    [userMapping addAttributeMappingsFromArray:@[@"login"]];
+    
+    // register mappings with the provider using a response descriptor
+    RKResponseDescriptor *responseDescriptor =
+    [RKResponseDescriptor responseDescriptorWithMapping:userMapping
+                                                 method:RKRequestMethodGET
+                                            pathPattern:@"/search/users"
+                                                keyPath:@"items"
+                                            statusCodes:[NSIndexSet indexSetWithIndex:200]];
+    
+    [objectManager addResponseDescriptor:responseDescriptor];
+}
+
+- (void)loadUsers
+{
+    NSString* login = @"Rushad";
+    
+    NSDictionary *queryParams = @{@"q" : login};
+    
+    [[RKObjectManager sharedManager] getObjectsAtPath:@"/search/users"
+                                           parameters:queryParams
+                                              success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+                                                  _users = mappingResult.array;
+                                                  [self.tableView reloadData];
+                                              }
+                                              failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                                                  NSLog(@"What do you mean by 'there is no users?': %@", error);
+                                              }];
 }
 
 #pragma mark - UISearchBarDelegate
@@ -46,7 +93,14 @@
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
 {
     [searchBar resignFirstResponder];
+    
     self.currentSearchString = searchBar.text;
+    
+    self.users = [[NSArray alloc] init];
+    UITableView* tableView = (UITableView*)self.view;
+    [tableView reloadData];
+    
+    [self loadUsers];
 }
 
 - (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar
@@ -69,23 +123,18 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 7;
+    return self.users.count;
 }
 
 - (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    GHUUserCell* cell = [tableView dequeueReusableCellWithIdentifier:@"UserCell"];
-    if (!cell)
-    {
-        [tableView registerNib:[UINib nibWithNibName:@"UserCell" bundle:nil] forCellReuseIdentifier:@"UserCell"];
-        cell = [tableView dequeueReusableCellWithIdentifier:@"UserCell" forIndexPath:indexPath];
-    }
-    return cell;
+    return [tableView dequeueReusableCellWithIdentifier:@"UserCell"];
 }
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(GHUUserCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    cell.login.text = [NSString stringWithFormat:@"User %d", indexPath.row];
+    GHUUserInfo* userInfo = self.users[indexPath.row];
+    cell.login.text = userInfo.login;
 }
 
 @end
