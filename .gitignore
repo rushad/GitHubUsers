@@ -2,3 +2,6 @@
 xcuserdata
 *.xccheckout
 *.xcuserstate
+*.xcworkspace
+Pods
+Podfile.lock
