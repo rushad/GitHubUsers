@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		3C32A1EAAC9C4B79BD8B6ADB /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B869C3EA2103413E8FB0187A /* libPods.a */; };
 		5E31506B19B720DB0093362D /* GHUUserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E31506A19B720DB0093362D /* GHUUserInfo.m */; };
-		5E31506E19B7243A0093362D /* GhuUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E31506D19B7243A0093362D /* GhuUtils.m */; };
 		5E38FA8F19B719FE00EDFD99 /* GHUImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E38FA8819B719FD00EDFD99 /* GHUImageCache.m */; };
 		5E38FA9019B719FE00EDFD99 /* GHUMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E38FA8A19B719FD00EDFD99 /* GHUMainViewController.m */; };
 		5E38FA9119B719FE00EDFD99 /* GHUUserCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E38FA8C19B719FD00EDFD99 /* GHUUserCell.m */; };
@@ -27,6 +26,7 @@
 		5E3A8C1419B6F9C700BA3B04 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E3A8BFC19B6F9C700BA3B04 /* UIKit.framework */; };
 		5E3A8C1C19B6F9C700BA3B04 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5E3A8C1A19B6F9C700BA3B04 /* InfoPlist.strings */; };
 		5E3A8C1E19B6F9C700BA3B04 /* GitHubUsersTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E3A8C1D19B6F9C700BA3B04 /* GitHubUsersTests.m */; };
+		5EC63A3D19B72817007E4127 /* GHUUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EC63A3C19B72817007E4127 /* GHUUtils.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,8 +43,6 @@
 		06E45CAF03054764B34D7AC4 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		5E31506919B720DB0093362D /* GHUUserInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GHUUserInfo.h; sourceTree = "<group>"; };
 		5E31506A19B720DB0093362D /* GHUUserInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHUUserInfo.m; sourceTree = "<group>"; };
-		5E31506C19B7243A0093362D /* GhuUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GhuUtils.h; sourceTree = "<group>"; };
-		5E31506D19B7243A0093362D /* GhuUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GhuUtils.m; sourceTree = "<group>"; };
 		5E38FA8719B719FD00EDFD99 /* GHUImageCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GHUImageCache.h; sourceTree = "<group>"; };
 		5E38FA8819B719FD00EDFD99 /* GHUImageCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHUImageCache.m; sourceTree = "<group>"; };
 		5E38FA8919B719FD00EDFD99 /* GHUMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GHUMainViewController.h; sourceTree = "<group>"; };
@@ -69,6 +67,8 @@
 		5E3A8C1919B6F9C700BA3B04 /* GitHubUsersTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GitHubUsersTests-Info.plist"; sourceTree = "<group>"; };
 		5E3A8C1B19B6F9C700BA3B04 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		5E3A8C1D19B6F9C700BA3B04 /* GitHubUsersTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GitHubUsersTests.m; sourceTree = "<group>"; };
+		5EC63A3B19B72817007E4127 /* GHUUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GHUUtils.h; sourceTree = "<group>"; };
+		5EC63A3C19B72817007E4127 /* GHUUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHUUtils.m; sourceTree = "<group>"; };
 		B869C3EA2103413E8FB0187A /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -146,14 +146,14 @@
 			isa = PBXGroup;
 			children = (
 				5E38FA9419B71A0800EDFD99 /* MainView */,
+				5EC63A3B19B72817007E4127 /* GHUUtils.h */,
+				5EC63A3C19B72817007E4127 /* GHUUtils.m */,
 				5E31506919B720DB0093362D /* GHUUserInfo.h */,
 				5E31506A19B720DB0093362D /* GHUUserInfo.m */,
 				5E38FA8719B719FD00EDFD99 /* GHUImageCache.h */,
 				5E38FA8819B719FD00EDFD99 /* GHUImageCache.m */,
 				5E3A8C0719B6F9C700BA3B04 /* GHUAppDelegate.h */,
 				5E3A8C0819B6F9C700BA3B04 /* GHUAppDelegate.m */,
-				5E31506C19B7243A0093362D /* GhuUtils.h */,
-				5E31506D19B7243A0093362D /* GhuUtils.m */,
 				5E3A8C0A19B6F9C700BA3B04 /* Images.xcassets */,
 				5E3A8BFF19B6F9C700BA3B04 /* Supporting Files */,
 			);
@@ -323,9 +323,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				5E3A8C0519B6F9C700BA3B04 /* main.m in Sources */,
+				5EC63A3D19B72817007E4127 /* GHUUtils.m in Sources */,
 				5E31506B19B720DB0093362D /* GHUUserInfo.m in Sources */,
 				5E3A8C0919B6F9C700BA3B04 /* GHUAppDelegate.m in Sources */,
-				5E31506E19B7243A0093362D /* GhuUtils.m in Sources */,
 				5E38FA9119B719FE00EDFD99 /* GHUUserCell.m in Sources */,
 				5E38FA9019B719FE00EDFD99 /* GHUMainViewController.m in Sources */,
 				5E38FA8F19B719FE00EDFD99 /* GHUImageCache.m in Sources */,
