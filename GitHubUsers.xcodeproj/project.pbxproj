@@ -26,6 +26,12 @@
 		5E3A8C1419B6F9C700BA3B04 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E3A8BFC19B6F9C700BA3B04 /* UIKit.framework */; };
 		5E3A8C1C19B6F9C700BA3B04 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5E3A8C1A19B6F9C700BA3B04 /* InfoPlist.strings */; };
 		5E3A8C1E19B6F9C700BA3B04 /* GitHubUsersTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E3A8C1D19B6F9C700BA3B04 /* GitHubUsersTests.m */; };
+		5E855BF619B84E030000F3BE /* User_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5E855BF519B84E030000F3BE /* User_iPhone.xib */; };
+		5E855BF919B85CB40000F3BE /* GHUUserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E855BF819B85CB40000F3BE /* GHUUserViewController.m */; };
+		5E855BFC19B879CB0000F3BE /* ImageCache.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5E855BFA19B879CB0000F3BE /* ImageCache.xcdatamodeld */; };
+		5E855BFE19B87B6D0000F3BE /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E855BFD19B87B6D0000F3BE /* CoreData.framework */; };
+		5E855C0119B897E30000F3BE /* Web_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5E855C0019B897E30000F3BE /* Web_iPhone.xib */; };
+		5E855C0419B8987F0000F3BE /* GHUWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E855C0319B8987F0000F3BE /* GHUWebViewController.m */; };
 		5EC63A4019B72936007E4127 /* GHUUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EC63A3F19B72936007E4127 /* GHUUtils.m */; };
 /* End PBXBuildFile section */
 
@@ -67,6 +73,14 @@
 		5E3A8C1919B6F9C700BA3B04 /* GitHubUsersTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GitHubUsersTests-Info.plist"; sourceTree = "<group>"; };
 		5E3A8C1B19B6F9C700BA3B04 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		5E3A8C1D19B6F9C700BA3B04 /* GitHubUsersTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GitHubUsersTests.m; sourceTree = "<group>"; };
+		5E855BF519B84E030000F3BE /* User_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = User_iPhone.xib; sourceTree = "<group>"; };
+		5E855BF719B85CB40000F3BE /* GHUUserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GHUUserViewController.h; sourceTree = "<group>"; };
+		5E855BF819B85CB40000F3BE /* GHUUserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHUUserViewController.m; sourceTree = "<group>"; };
+		5E855BFB19B879CB0000F3BE /* ImageCache.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ImageCache.xcdatamodel; sourceTree = "<group>"; };
+		5E855BFD19B87B6D0000F3BE /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		5E855C0019B897E30000F3BE /* Web_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Web_iPhone.xib; sourceTree = "<group>"; };
+		5E855C0219B8987F0000F3BE /* GHUWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GHUWebViewController.h; sourceTree = "<group>"; };
+		5E855C0319B8987F0000F3BE /* GHUWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHUWebViewController.m; sourceTree = "<group>"; };
 		5EC63A3E19B72936007E4127 /* GHUUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GHUUtils.h; sourceTree = "<group>"; };
 		5EC63A3F19B72936007E4127 /* GHUUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHUUtils.m; sourceTree = "<group>"; };
 		B869C3EA2103413E8FB0187A /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -77,6 +91,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5E855BFE19B87B6D0000F3BE /* CoreData.framework in Frameworks */,
 				5E3A8BFB19B6F9C700BA3B04 /* CoreGraphics.framework in Frameworks */,
 				5E3A8BFD19B6F9C700BA3B04 /* UIKit.framework in Frameworks */,
 				5E3A8BF919B6F9C700BA3B04 /* Foundation.framework in Frameworks */,
@@ -133,6 +148,7 @@
 		5E3A8BF719B6F9C700BA3B04 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5E855BFD19B87B6D0000F3BE /* CoreData.framework */,
 				5E3A8BF819B6F9C700BA3B04 /* Foundation.framework */,
 				5E3A8BFA19B6F9C700BA3B04 /* CoreGraphics.framework */,
 				5E3A8BFC19B6F9C700BA3B04 /* UIKit.framework */,
@@ -145,6 +161,8 @@
 		5E3A8BFE19B6F9C700BA3B04 /* GitHubUsers */ = {
 			isa = PBXGroup;
 			children = (
+				5E855BFF19B897B90000F3BE /* WebView */,
+				5E855BF219B84D9E0000F3BE /* UserView */,
 				5E38FA9419B71A0800EDFD99 /* MainView */,
 				5E31506919B720DB0093362D /* GHUUserInfo.h */,
 				5E31506A19B720DB0093362D /* GHUUserInfo.m */,
@@ -154,6 +172,7 @@
 				5EC63A3F19B72936007E4127 /* GHUUtils.m */,
 				5E3A8C0719B6F9C700BA3B04 /* GHUAppDelegate.h */,
 				5E3A8C0819B6F9C700BA3B04 /* GHUAppDelegate.m */,
+				5E855BFA19B879CB0000F3BE /* ImageCache.xcdatamodeld */,
 				5E3A8C0A19B6F9C700BA3B04 /* Images.xcassets */,
 				5E3A8BFF19B6F9C700BA3B04 /* Supporting Files */,
 			);
@@ -187,6 +206,26 @@
 				5E3A8C1A19B6F9C700BA3B04 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		5E855BF219B84D9E0000F3BE /* UserView */ = {
+			isa = PBXGroup;
+			children = (
+				5E855BF519B84E030000F3BE /* User_iPhone.xib */,
+				5E855BF719B85CB40000F3BE /* GHUUserViewController.h */,
+				5E855BF819B85CB40000F3BE /* GHUUserViewController.m */,
+			);
+			name = UserView;
+			sourceTree = "<group>";
+		};
+		5E855BFF19B897B90000F3BE /* WebView */ = {
+			isa = PBXGroup;
+			children = (
+				5E855C0019B897E30000F3BE /* Web_iPhone.xib */,
+				5E855C0219B8987F0000F3BE /* GHUWebViewController.h */,
+				5E855C0319B8987F0000F3BE /* GHUWebViewController.m */,
+			);
+			name = WebView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -269,6 +308,8 @@
 			files = (
 				5E38FA9319B719FE00EDFD99 /* UserCell.xib in Resources */,
 				5E38FA9219B719FE00EDFD99 /* Main_iPhone.xib in Resources */,
+				5E855BF619B84E030000F3BE /* User_iPhone.xib in Resources */,
+				5E855C0119B897E30000F3BE /* Web_iPhone.xib in Resources */,
 				5E3A8C0319B6F9C700BA3B04 /* InfoPlist.strings in Resources */,
 				5E3A8C0B19B6F9C700BA3B04 /* Images.xcassets in Resources */,
 			);
@@ -326,7 +367,10 @@
 				5EC63A4019B72936007E4127 /* GHUUtils.m in Sources */,
 				5E31506B19B720DB0093362D /* GHUUserInfo.m in Sources */,
 				5E3A8C0919B6F9C700BA3B04 /* GHUAppDelegate.m in Sources */,
+				5E855C0419B8987F0000F3BE /* GHUWebViewController.m in Sources */,
+				5E855BF919B85CB40000F3BE /* GHUUserViewController.m in Sources */,
 				5E38FA9119B719FE00EDFD99 /* GHUUserCell.m in Sources */,
+				5E855BFC19B879CB0000F3BE /* ImageCache.xcdatamodeld in Sources */,
 				5E38FA9019B719FE00EDFD99 /* GHUMainViewController.m in Sources */,
 				5E38FA8F19B719FE00EDFD99 /* GHUImageCache.m in Sources */,
 			);
@@ -539,6 +583,20 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		5E855BFA19B879CB0000F3BE /* ImageCache.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				5E855BFB19B879CB0000F3BE /* ImageCache.xcdatamodel */,
+			);
+			currentVersion = 5E855BFB19B879CB0000F3BE /* ImageCache.xcdatamodel */;
+			name = ImageCache.xcdatamodeld;
+			path = ../ImageCache.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 5E3A8BED19B6F9C600BA3B04 /* Project object */;
 }

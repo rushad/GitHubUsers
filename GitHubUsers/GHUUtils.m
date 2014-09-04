@@ -13,8 +13,10 @@
 + (UIActivityIndicatorView*)startSpinnerAtView:(UIView*)view
 {
     CGPoint center = view.center;
-    center.x += view.bounds.origin.x;
-    center.y += view.bounds.origin.y;
+    if (view.bounds.origin.x < 0)
+        center.x += view.bounds.origin.x;
+    if (view.bounds.origin.y < 0)
+        center.y += view.bounds.origin.y;
     CGRect spinnerRect = CGRectMake(center.x - 10, center.y - 10, 20, 20);
     UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithFrame:spinnerRect];
     spinner.color = [UIColor blueColor];

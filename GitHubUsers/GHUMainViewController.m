@@ -11,6 +11,7 @@
 #import "GHUImageCache.h"
 #import "GHUUserCell.h"
 #import "GHUUserInfo.h"
+#import "GHUUserViewController.h"
 #import "GHUUtils.h"
 
 #import <RestKit/RestKit.h>
@@ -26,6 +27,10 @@
 @end
 
 @implementation GHUMainViewController
+
+static NSString* const userCellNibName = @"UserCell";
+static NSString* const userNibName = @"User_iPhone";
+static NSString* const userCellId = @"UserCell";
 
 - (id)initWithNibName:(NSString*)nibNameOrNil bundle:(NSBundle*)nibBundleOrNil
 {
@@ -49,7 +54,7 @@
     self.navigationItem.titleView = searchBar;
 
     UITableView* tableView = (UITableView*)self.view;
-    [tableView registerNib:[UINib nibWithNibName:@"UserCell" bundle:nil] forCellReuseIdentifier:@"UserCell"];
+    [tableView registerNib:[UINib nibWithNibName:userCellNibName bundle:nil] forCellReuseIdentifier:userCellId];
 }
 
 - (void)configureRestKit
@@ -98,7 +103,7 @@
                                                        }
                                               failure:^(RKObjectRequestOperation *operation, NSError *error)
                                                        {
-                                                           NSLog(@"What do you mean by 'there is no users?': %@", error);
+                                                           NSLog(@"Error loading users: %@", error);
                                                        }];
 }
 
@@ -143,23 +148,23 @@
 
 - (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    GHUUserCell* cell = [tableView dequeueReusableCellWithIdentifier:@"UserCell"];
-    cell.avatar.image = nil;
+    GHUUserCell* cell = [tableView dequeueReusableCellWithIdentifier:userCellId];
+    cell.avatarView.image = nil;
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(GHUUserCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     GHUUserInfo* userInfo = self.users[indexPath.row];
-    cell.name.text = userInfo.name;
-    cell.url.text = userInfo.url;
+    cell.nameView.text = userInfo.name;
+    cell.urlView.text = userInfo.url;
     if (userInfo.avatar)
     {
-        cell.avatar.image = userInfo.avatar;
+        cell.avatarView.image = userInfo.avatar;
     }
     else
     {
-        UIActivityIndicatorView* spinner = [GHUUtils startSpinnerAtView:cell.avatar];
+        UIActivityIndicatorView* spinner = [GHUUtils startSpinnerAtView:cell.avatarView];
         
         [self.imageCache startLoadingImageWithUrl:userInfo.avatarUrl
                                          userData:self.searchId
@@ -176,6 +181,13 @@
                                                        }
                                                    }];
     }
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    GHUUserViewController* userViewController = [[GHUUserViewController alloc] initWithNibName:userNibName bundle:nil];
+    userViewController.userInfo = self.users[indexPath.row];
+    [self.navigationController pushViewController:userViewController animated:YES];
 }
 
 @end
