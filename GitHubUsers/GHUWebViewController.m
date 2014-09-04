@@ -8,9 +8,12 @@
 
 #import "GHUWebViewController.h"
 
-@interface GHUWebViewController ()
+#import "GHUUtils.h"
+
+@interface GHUWebViewController () <UIWebViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
+@property (nonatomic, strong) UIActivityIndicatorView* spinner;
 
 @end
 
@@ -19,8 +22,8 @@
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
+    if (self)
+    {
     }
     return self;
 }
@@ -28,7 +31,26 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.webView.delegate = self;
     [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:self.url]]];
+}
+
+#pragma mark - UIWebViewDelegate
+
+- (void)webViewDidStartLoad:(UIWebView *)webView
+{
+    self.spinner = [GHUUtils startSpinnerAtView:webView];
+}
+
+- (void)webViewDidFinishLoad:(UIWebView *)webView
+{
+    [GHUUtils stopSpinner:self.spinner];
+}
+
+- (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
+{
+    [GHUUtils stopSpinner:self.spinner];
 }
 
 @end
